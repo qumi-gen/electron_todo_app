@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+<div class="wrapper">
+<form ></form>
+<div id="app">
+  {{ message }}
+
+<input v-model="to" placeholder="タスク">
+<input v-model="score" placeholder="重要度">
+<p>Message is: {{ to }}</p>
+
+</div>
+ 
+<div id="add-to-db">
+  <button  v-on:click="appdata">add</button>
+</div>
+
+
+</div>
+<script src="param.js"></script>
+<script src="db.js"></script>
+
   </body>
 </html>

@@ -7,25 +7,27 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-<div class="wrapper">
-<form ></form>
+
+
+<div>
 <div id="app">
   {{ message }}
 
-<input v-model="to" placeholder="タスク">
-<input v-model="score" placeholder="重要度">
-<p>Message is: {{ to }}</p>
+<input v-model="todo_name" placeholder="タスク">
+<input v-model="score" placeholder="重要度" number>
 
-</div>
+<p>Message is: {{ todo_name }}</p>
+
+
  
-<div id="add-to-db">
+<span>
   <button  v-on:click="appdata">add</button>
+</span>
+
+</div>
 </div>
 
-
-</div>
-<script src="param.js"></script>
-<script src="db.js"></script>
+<script src="front.js"></script>
 
   </body>
 </html>

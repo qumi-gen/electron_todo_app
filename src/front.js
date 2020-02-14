@@ -1,7 +1,7 @@
 const { ipcRenderer } = window.native;
 
 var vm = new Vue({
-    el: '#app',
+    el: '#input_app',
     data: {
       message: 'Hello Vue!',
       todo_name:'',

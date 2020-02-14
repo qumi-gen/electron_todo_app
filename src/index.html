@@ -10,10 +10,10 @@
 
 
 <div>
-<div id="app">
+<div id="input_app">
 <input v-model="todo_name" placeholder="タスク">
 <select v-model="score" placeholder="重要度" >
-  <option value=""></option>
+  <option value="1"></option>
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -27,9 +27,10 @@
 <span>
   <button  v-on:click="appdata">add</button>
 </span>
+<!-- 
 <p>Message is: {{ todo_name }}</p>
 <p>score is :{{ score }}</p>
-
+ -->
  
 <!-- <span>
   <button  v-on:click="appdata">add</button>
@@ -41,13 +42,13 @@
 <!-- <li v-for= "todo in todo_data">
   {{ todo.todo }}
 </li> -->
-<li v-for= "todo in todo_data">
+<div v-for= "todo in todo_data">
   <input type="checkbox" v-model="todo.checked" id="checkbox" value="todo.checked" v-on:change="is_checked">
   {{ todo.todo }}
-  {{ todo.score }}
-  {{ todo.checked}}
+  <!-- {{ todo.score }} -->
+  <!-- {{ todo.checked}} -->
 
-</li>
+</div>
   <!-- <p> {{ todo_data }}</p> -->
 
 </div>

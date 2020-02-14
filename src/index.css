@@ -4,3 +4,7 @@ body {
   max-width: 38rem;
   padding: 2rem;
 }
+
+#input_app {
+  padding-bottom: 2rem;
+}

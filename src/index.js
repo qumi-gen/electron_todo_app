@@ -1,10 +1,12 @@
 const { app, ipcMain,BrowserWindow } = require('electron');
 const path = require('path');
 const Datastore = require("nedb");
-var db = new Datastore({
+const db = new Datastore({
   filename:'no_todo.db',
-  autoload: true
+  autoload: true,
+  
 });
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -66,12 +68,43 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 
 
+ipcMain.on('init-message',function(event){
+  db.find({'checked':false}).sort({'score':-1}).exec(function(err,sort_docs){
+    event.sender.send('init-replay',sort_docs);
+  });
+})
+
 
 ipcMain.on('asynchronous-message', function(event,arg) {
   db.insert(arg,function(err,newDoc){
-    console.log('No',err);
     console.log('New',newDoc);
-  })
-  event.sender.send('asynchronous-replay','pong');
+  });
+
+  
+  var db_find = db.find({},{sort:{'score': -1}},function(err,db_json){
+    //console.log('OK',db_json);
+    //event.sender.send('asynchronous-replay',db_json);
+  });
+
+  var db_find = db.find({'checked':false}).sort({'score':-1}).exec(function(err,sort_docs){
+    console.log(sort_docs)
+    event.sender.send('asynchronous-replay',sort_docs);
+  });
+  
+  // event.sender.send('asynchronous-replay',db_find);
+
+  
+  // event.sender.send('asynchronous-replay',db_json);
 
 });
+
+ipcMain.on('is_check',function(event,arg){
+  console.log(arg);
+  db.update({_id:arg._id},{$set:{checked:arg.checked}});
+  db.find({'checked':false}).sort({'score':-1}).exec(function(err,sort_docs){
+    console.log(sort_docs)
+    event.sender.send('is_check-replay',sort_docs);
+  });
+
+});
+

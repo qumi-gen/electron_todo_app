@@ -3,59 +3,30 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>TODO</title>
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-
-
 <div>
+
 <div id="input_app">
 <input v-model="todo_name" placeholder="タスク">
-<select v-model="score" placeholder="重要度" >
-  <option value="1"></option>
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-  <option>6</option>
-  <option>7</option>
-  <option>8</option>
-  <option>9</option>
+<select  placeholder="重要度" v-model= "score">
+<option v-for="item in items" >{{ item.score_val }}</option>
 </select>
 <span>
   <button  v-on:click="appdata">add</button>
 </span>
-<!-- 
-<p>Message is: {{ todo_name }}</p>
-<p>score is :{{ score }}</p>
- -->
- 
-<!-- <span>
-  <button  v-on:click="appdata">add</button>
-</span> -->
-
 </div>
 
 <div id="todolist">
-<!-- <li v-for= "todo in todo_data">
-  {{ todo.todo }}
-</li> -->
 <div v-for= "todo in todo_data">
   <input type="checkbox" v-model="todo.checked" id="checkbox" value="todo.checked" v-on:change="is_checked">
   {{ todo.todo }}
-  <!-- {{ todo.score }} -->
-  <!-- {{ todo.checked}} -->
-
 </div>
-  <!-- <p> {{ todo_data }}</p> -->
-
 </div>
 
 </div>
-
 <script src="front.js"></script>
-
   </body>
 </html>

@@ -6,21 +6,18 @@ var vm = new Vue({
       message: 'Hello Vue!',
       todo_name:'',
       score:'',
-
+      items:[
+        {score_val:"1"},
+        {score_val:"2"},
+        {score_val:"3"},
+        {score_val:"4"},
+        {score_val:"5"},
+        {score_val:"6"},
+        {score_val:"7"},
+        {score_val:"8"},
+        {score_val:"9"}
+      ]
     },
-
-  //   created:function(){
-  //     ipcRenderer.send('init-message');
-  //     ipcRenderer.on('init-replay',(event,args) =>{
-  //       {
-  //       //console.log(args);
-  //       vm2.todo_data = args;
-
-  //       vm.todo_name = '';
-  //       vm.score = '';
-  //     }
-  // });
-  //   },
 
     methods: {
       appdata:function(){
@@ -42,17 +39,8 @@ var vm = new Vue({
 }
 });
 
-
-
-//var todo_data_list = {todo_data:''}
-
 var vm2 = new Vue({
-  el:'#todolist',
-  // data:{
-  //   checked:'',
-  //   todo_data_list:{todo_data:''},
-    
-  // }
+el:'#todolist',
 data:{
   todo_data:'',
 },
@@ -73,16 +61,7 @@ created:function(){
 methods:{
   
   is_checked:function(){
-    //debugger;
-    // for(checked_todo in this.todo_data){
-    //   //debugger;
-    //   if(checked_todo.checked){
-        
-    //     ipcRenderer.send('is_check',checked_todo);
-    //     break;
-    //   }
-    // }
-    
+
     len = this.todo_data.length;
     var i = 0;
     debugger;

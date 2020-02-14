@@ -80,21 +80,10 @@ ipcMain.on('asynchronous-message', function(event,arg) {
     console.log('New',newDoc);
   });
 
-  
-  var db_find = db.find({},{sort:{'score': -1}},function(err,db_json){
-    //console.log('OK',db_json);
-    //event.sender.send('asynchronous-replay',db_json);
-  });
-
-  var db_find = db.find({'checked':false}).sort({'score':-1}).exec(function(err,sort_docs){
+    db.find({'checked':false}).sort({'score':-1}).exec(function(err,sort_docs){
     console.log(sort_docs)
     event.sender.send('asynchronous-replay',sort_docs);
   });
-  
-  // event.sender.send('asynchronous-replay',db_find);
-
-  
-  // event.sender.send('asynchronous-replay',db_json);
 
 });
 
